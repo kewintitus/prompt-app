@@ -1,7 +1,18 @@
 import React from 'react';
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <section className="w-full flex-center flex-col">
+      <h1 className="head_text text-center">
+        Discover and share <br className="max-md:hidden" />
+        <span className="orange_gradient text-center">AI-powered prompts</span>
+        <p className="desc text-center">
+          Promptopia is an AI prompting tool for modern world to create and
+          share create prompts
+        </p>
+      </h1>
+    </section>
+  );
 };
 
 export default Home;
