@@ -1,3 +1,4 @@
+import Feed from '@components/Feed';
 import React from 'react';
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
           share create prompts
         </p>
       </h1>
+      <Feed />
     </section>
   );
 };
