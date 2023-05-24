@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
@@ -32,6 +33,34 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             className="form_textarea"
           ></textarea>
         </label>
+        <label htmlFor="">
+          Tag
+          <span className="font-normal ">(#product, #webdev)</span>
+          <input
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            value={post.tag}
+            onChange={(e) => {
+              setPost({ ...post, tag: e.target.value });
+            }}
+            placeholder="#tag"
+            required
+            className="form_input"
+          ></input>
+        </label>
+        <div className="flex-end mx-3 mb-5 gap-4">
+          <Link href="/" className="text-gray-500 text-sm">
+            <button
+              type="submit"
+              disabled={submitting}
+              className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
+            >
+              {submitting ? `${type}...` : type}
+            </button>
+          </Link>
+        </div>
       </form>
     </section>
   );
