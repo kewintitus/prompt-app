@@ -2,6 +2,14 @@ import Link from 'next/link';
 import React from 'react';
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  // console.log(post);
+  // console.log(handleSubmit);
+
+  const submitSample = (e) => {
+    e.preventDefault();
+    console.log('Triggerred');
+  };
+
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">
@@ -51,15 +59,16 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           ></input>
         </label>
         <div className="flex-end mx-3 mb-5 gap-4">
-          <Link href="/" className="text-gray-500 text-sm">
-            <button
-              type="submit"
-              disabled={submitting}
-              className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
-            >
-              {submitting ? `${type}...` : type}
-            </button>
+          <Link href="#" className="text-gray-500 text-sm">
+            cancel
           </Link>
+          <button
+            type="submit"
+            disabled={submitting}
+            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
+          >
+            {submitting ? `${type}...` : type}
+          </button>
         </div>
       </form>
     </section>
