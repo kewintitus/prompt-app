@@ -11,10 +11,27 @@ const MyProfile = () => {
 
   const router = useRouter();
 
-  const handleEdit = () => {
-    router.push(`/update-prompt?id=${post._id}`);
+  const handleEdit = (post) => {
+    console.log(post);
+    router.push(`/update-prompt?id=${post[0]._id}`);
   };
-  const handleDelete = async () => {};
+  const handleDelete = async (post) => {
+    const hasConfirmed = confirm('Are  you sure to delete this prompt');
+
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/prompt/${post[0]._id.toString()}`, {
+          method: 'DELETE',
+        });
+
+        const filteredPosts = posts.filter((p) => p._id !== post[0]._id);
+
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -32,8 +49,12 @@ const MyProfile = () => {
       name="My"
       desc="Welcome to your personalised profile page"
       data={posts}
-      handleEdit={handleEdit}
-      handleDelete={handleDelete}
+      handleEdit={() => {
+        handleEdit(posts);
+      }}
+      handleDelete={() => {
+        handleDelete(posts);
+      }}
     />
   );
 };

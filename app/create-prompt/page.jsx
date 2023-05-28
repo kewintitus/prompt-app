@@ -31,7 +31,7 @@ const CreatePrompt = () => {
 
       if (response.ok) {
         console.log(post);
-        // router.push('/');
+        router.push('/');
       }
     } catch (error) {
       console.log(error);
